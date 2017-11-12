@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -19,20 +20,20 @@ public class LambdaTest {
     @Test
     public void removeStringsWithMoreThanThreeCharacters(){
         List<String> input = asList("This", "is", "java", "8");
-        // input = Lambda.filter();
+        input = input.stream().filter(s -> s.length() <= 2).collect(Collectors.toList());
         assertThat(input, contains("is", "8"));
     }
 
     @Test
     public void shouldBeExecutedWitingATransaction(){
         TransactionLambda lambda = new TransactionLambda();
-        // Lambda.processWithinTransaction
+        Lambda.processWithinTransaction(lambda);
         assertTrue(lambda.isConsumed());
     }
 
     @Test
     public void shouldCreateAString(){
-        String bigString = Lambda.create(/* Pass something here */);
+        String bigString = Lambda.create(() -> "hello");
         assertTrue(bigString.length()>0);
     }
 

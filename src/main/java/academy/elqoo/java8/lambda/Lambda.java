@@ -4,7 +4,7 @@ package academy.elqoo.java8.lambda;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.*;
 import java.util.stream.Collectors;
 
 public class Lambda {
@@ -13,18 +13,19 @@ public class Lambda {
         return strings.stream().filter(condition).collect(Collectors.toList());
     }
 
-    public static void processWithinTransaction(/*Runnable runnable*/){
+    public static void processWithinTransaction(Runnable runnable){
         Transaction transaction = new Transaction();
         transaction.start();
+        runnable.run();
         transaction.stop();
     }
 
-    public static String create(/* Place something here*/){
-        throw new NotImplementedException();
+    public static String create(Supplier<String> supplier){
+        return supplier.get();
     }
 
-    public static int getStringLength(String s /*, Place something here*/){
-        throw new NotImplementedException();
+    public static Integer getStringLength(String s, Function<String, Integer> function){
+        return function.apply(s);
     }
 
     public static int multiply(int a, int b /*, Place something here*/){
