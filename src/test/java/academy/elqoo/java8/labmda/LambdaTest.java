@@ -5,6 +5,7 @@ import academy.elqoo.java8.lambda.TransactionLambda;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,8 +21,8 @@ public class LambdaTest {
     @Test
     public void removeStringsWithMoreThanThreeCharacters(){
         List<String> input = asList("This", "is", "java", "8");
-        input = input.stream().filter(s -> s.length() <= 2).collect(Collectors.toList());
-        assertThat(input, contains("is", "8"));
+        input = Lambda.filter(input, s -> s.length()<3)
+;        assertThat(input, contains("is", "8"));
     }
 
     @Test
@@ -40,7 +41,7 @@ public class LambdaTest {
     @Test
     public void extractStringSize(){
         String myString = "This is great";
-        int length = Lambda.getStringLength(myString /*, place a lambda here */);
+        int length = Lambda.getStringLength(myString, String::length);
         assertTrue(length==13);
     }
 
@@ -48,14 +49,14 @@ public class LambdaTest {
     public void multiply(){
         int a = 5;
         int b = 6;
-        int result = Lambda.multiply(a,b/* pass a lambda here */);
+        int result = Lambda.multiply(a,b, (integer, integer2) -> a*b);
         assertTrue(result==30);
     }
 
     @Test
     public void shouldSortStrings() throws Exception {
         List<String> input = Arrays.asList("C", "F", "A", "D", "B", "E");
-        List<String> result = Lambda.sortStrings(input);
+        List<String> result = Lambda.sortStrings(input, Comparator.comparing(s -> s));
         assertThat(result, is(equalTo(Arrays.asList("A", "B", "C", "D", "E", "F"))));
     }
 

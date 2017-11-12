@@ -3,6 +3,7 @@ package academy.elqoo.java8.lambda;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.*;
 import java.util.stream.Collectors;
@@ -28,12 +29,13 @@ public class Lambda {
         return function.apply(s);
     }
 
-    public static int multiply(int a, int b /*, Place something here*/){
-        throw new NotImplementedException();
+    public static int multiply(int a, int b , BinaryOperator<Integer> operation){
+        return operation.apply(a, b);
     }
 
-    public static List<String> sortStrings(List<String> strings/*, Place something here*/){
-        throw new NotImplementedException();
+    public static List<String> sortStrings(List<String> strings, Comparator<String> comparator){
+         strings.sort(comparator);
+         return strings;
     }
 
 }
