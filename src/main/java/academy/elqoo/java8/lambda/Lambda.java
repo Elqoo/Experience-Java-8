@@ -23,7 +23,7 @@ public class Lambda {
         throw new NotImplementedException();
     }
 
-    public static int getStringLength(String s /*, Place something here*/){
+    public static Integer getStringLength(String s /*, Place something here*/){
         throw new NotImplementedException();
     }
 
