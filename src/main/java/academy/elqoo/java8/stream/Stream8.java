@@ -3,17 +3,23 @@ package academy.elqoo.java8.stream;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.awt.datatransfer.StringSelection;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class Stream8 {
 
     public static List<Integer> returnSquareRoot(List<Integer> numbers){
-    	throw new NotImplementedException();
+        // IntStream in = numbers.stream().mapToInt(value -> value).map(operand -> operand * operand);
+        // return in.boxed().collect(toList());
+        return numbers.stream().map(Math::sqrt).map(Double::intValue).collect(toList());
     }
 
     public static List<Integer> getAgeFromUsers(List<User> user){
@@ -33,7 +39,7 @@ public class Stream8 {
     }
 
     public static List<String> mapToUpperCase(List<String> strings){
-        throw new NotImplementedException();
+        return strings.stream().map(String::toUpperCase).collect(toList());
     }
 
     public static Integer sum(List<Integer> integers){

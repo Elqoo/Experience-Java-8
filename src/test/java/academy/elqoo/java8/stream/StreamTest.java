@@ -26,9 +26,9 @@ public class StreamTest {
 
     @Test
     public void shouldReturnSquareRoot() {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> numbers = Arrays.asList(1, 4, 16, 256);
         List<Integer> squares = Stream8.returnSquareRoot(numbers);
-        assertThat(squares, is(equalTo(Arrays.asList(1, 4, 9, 16, 25))));
+        assertThat(squares, is(equalTo(Arrays.asList(1, 2, 4, 16))));
     }
 
     @Test
