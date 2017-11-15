@@ -110,7 +110,7 @@ public class Stream8 {
     }
 
     public static boolean isPrime(int number) {
-        throw new NotImplementedException();
+        return IntStream.rangeClosed(2, number/2).noneMatch(i -> number%i == 0);
     }
 
     public static List<Integer> generate10RandomNumbers(){
