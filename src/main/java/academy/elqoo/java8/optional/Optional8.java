@@ -8,8 +8,8 @@ public class Optional8 {
         return Optional.of(new Book("Experience Java 8"));
     }
 
-    public static Optional<Book> getBookWithAutohor(){
-        return Optional.of(new Book("Stijn De Mulder"));
+    public static Optional<Book> getBookWithAuthor(){
+        return Optional.of(new Book("Java 8", "Stijn De Mulder"));
     }
 
 }
