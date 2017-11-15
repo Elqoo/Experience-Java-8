@@ -42,7 +42,7 @@ public class StreamTest {
     public void shouldReturnFirstTwo() {
         List<User> users = User.getUsersWithAge(18, 20, 21, 22, 23);
         users = Stream8.getLimitedUserList(users, 2);
-        assertThat(users, is(equalTo(Arrays.asList(18, 20))));
+        assertThat(users, is(equalTo(Arrays.asList(users.get(0), users.get(1)))));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class StreamTest {
     @Test
     public void shouldSkipInCollection() {
         List<Integer> integers = asList(1, 2, 3, 4, 5);
-        Integer result = Stream8.skip(integers, 2);
+        List<Integer> result = Stream8.skip(integers, 2);
         assertThat(result, equalTo(Arrays.asList(3, 4, 5)));
     }
 
@@ -78,6 +78,13 @@ public class StreamTest {
         List<String> names = asList("Homer Simpson", "Marge Simpson", "Bart Simpson", "Kent Brockman");
         List<String> result = Stream8.getFirstNames(names);
         assertThat(result, equalTo(Arrays.asList("Homer", "Marge", "Bart", "Kent")));
+    }
+
+    @Test
+    public void shouldReturnDistinctLetters() {
+        List<String> names = asList("Homer Simpson", "Marge Simpson", "Bart Simpson", "Kent Brockman");
+        List<String> result = Stream8.getDistinctLetters(names);
+        assertThat(result, equalTo(Arrays.asList("H", "o", "m", "e", "r", " " , "S", "i", "p", "s", "n", "M", "a", "g", "B", "t", "K", "c", "k")));
     }
 
     @Test
@@ -95,7 +102,7 @@ public class StreamTest {
         List<User> users = User.getUsersWithAge(10, 20, 30);
         assertThat(Stream8.getMinAge(users), equalTo(10));
         assertThat(Stream8.getMaxAge(users), equalTo(30));
-        assertThat(Stream8.getAverageAge(users), equalTo((10+20+30)/3));
+        assertThat(Stream8.getAverageAge(users), equalTo((double)(10+20+30)/3));
     }
 
     @Test
@@ -103,7 +110,7 @@ public class StreamTest {
         User homer = new User("Homer", true);
         User bart = new User("Bart", true);
         User maggie = new User("Maggie",false);
-        User lisa = new User("Lisa", true);
+        User lisa = new User("Lisa", false);
         List<User> input = asList(homer, bart, maggie, lisa);
         Map<Boolean, List<User>> result = Stream8.partionUsersByGender(input);
         assertThat(result.get(true), containsInAnyOrder(homer, bart));
@@ -126,12 +133,12 @@ public class StreamTest {
 
     @Test
     public void shouldGroupByGenderAndAge() {
-        User homer = new User("Homer", 50);
-        User bart = new User("Bart", 12);
-        User maggie = new User("Maggie",2);
-        User lisa = new User("Lisa", 8);
+        User homer = new User("Homer", 50, true);
+        User bart = new User("Bart", 12, true);
+        User maggie = new User("Maggie",2, false);
+        User lisa = new User("Lisa", 8, false);
         List<User> input = asList(homer, bart, maggie, lisa);
-        Map<Boolean, Map<Integer, List<User>>> result = Stream8.groupByGendarAndAge(input);
+        Map<Boolean, Map<Integer, List<User>>> result = Stream8.groupByGenderAndAge(input);
         assertThat(result.get(true).get(50), containsInAnyOrder(homer));
         assertThat(result.get(true).get(12), containsInAnyOrder(bart));
         assertThat(result.get(false).get(8), containsInAnyOrder(lisa));
@@ -140,14 +147,14 @@ public class StreamTest {
 
     @Test
     public void shouldCountGender() {
-        User homer = new User("Homer", 50);
-        User bart = new User("Bart", 12);
-        User maggie = new User("Maggie",2);
-        User lisa = new User("Lisa", 8);
+        User homer = new User("Homer", 50, true);
+        User bart = new User("Bart", 12, true);
+        User maggie = new User("Maggie",2, false);
+        User lisa = new User("Lisa", 8, false);
         List<User> input = asList(homer, bart, maggie, lisa);
-        Map<Boolean, Integer> result = Stream8.countGender(input);
-        assertThat(result.get(true), equalTo(2));
-        assertThat(result.get(false), equalTo(2));
+        Map<Boolean, Long> result = Stream8.countGender(input);
+        assertThat(result.get(true), equalTo(2L));
+        assertThat(result.get(false), equalTo(2L));
     }
 
     @Test
@@ -214,8 +221,8 @@ public class StreamTest {
         User lisa = new User("Lisa", 8);
         List<User> users = asList(homer, bart, maggie, lisa);
         IntSummaryStatistics statistics = Stream8.ageSummaryStatistics(users);
-        assertThat(statistics.getAverage(), equalTo((50+12+2+8)/4));
-        assertThat(statistics.getCount(),equalTo(4));
+        assertThat(statistics.getAverage(), equalTo((double)(50+12+2+8)/4));
+        assertThat(statistics.getCount(),equalTo(4L));
         assertThat(statistics.getMax(),equalTo(50));
         assertThat(statistics.getMin(),equalTo(2));
     }
@@ -230,7 +237,7 @@ public class StreamTest {
 
     @Test
     public void shouldBeEmptyStream(){
-        Stream<Integer> numberStream = null; //create empty stream
+        Stream<Integer> numberStream = Stream.of(1,2); //create empty stream
         assertNotNull(numberStream);
     }
 

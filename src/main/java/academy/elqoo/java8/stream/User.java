@@ -29,6 +29,12 @@ public class User {
         this.age = age;
     }
 
+    public User(String name, Integer age, boolean male) {
+        this.name = name;
+        this.age = age;
+        this.male = male;
+    }
+
     public String getName() {
         return name;
     }
