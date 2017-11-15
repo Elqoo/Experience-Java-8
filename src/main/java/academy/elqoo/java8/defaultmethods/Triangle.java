@@ -6,4 +6,5 @@ public class Triangle extends AbstractShape{
     public String getName() {
         return "Triangle";
     }
+
 }
