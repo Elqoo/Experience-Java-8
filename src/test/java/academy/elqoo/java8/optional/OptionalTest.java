@@ -2,7 +2,6 @@ package academy.elqoo.java8.optional;
 
 import org.junit.Test;
 
-import java.io.OptionalDataException;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -26,7 +25,7 @@ public class OptionalTest {
 
     @Test
     public void shouldReturnBookAuthor(){
-        Optional<Book> book = Optional8.getBookWithAutohor();
+        Optional<Book> book = Optional8.getBookWithAuthor();
         String authorName = null; // book. ....
         assertThat(authorName,equalTo("Stijn De Mulder"));
     }
@@ -37,7 +36,7 @@ public class OptionalTest {
         book.get().getAuthor();
     }
 
-    @Test(expected = OptionalDataException.class)
+    @Test(expected = MyCustomException.class)
     public void shouldThrowOptionalEmptyException(){
         Optional<Book> book = Optional8.getBook();
         book.get().getAuthor(); // getAuthor.or.....
