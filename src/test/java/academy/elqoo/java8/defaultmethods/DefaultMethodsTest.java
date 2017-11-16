@@ -1,21 +1,13 @@
 package academy.elqoo.java8.defaultmethods;
 
-import academy.elqoo.java8.stream.CharacterToStringCollector;
-import academy.elqoo.java8.stream.Stream8;
-import academy.elqoo.java8.stream.User;
 import org.junit.Test;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.*;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class DefaultMethodsTest {
 
