@@ -39,7 +39,7 @@ public class DateAndTimeTest {
         int month =0;
         int day = 0;
         assertThat(year, is(equalTo(newYearsEve.getYear())));
-        assertThat(month, is(equalTo(newYearsEve.getMonth())));
+        assertThat(month, is(equalTo(12)));
         assertThat(day, is(equalTo(newYearsEve.getDayOfMonth())));
     }
 
