@@ -26,10 +26,10 @@ public class DateAndTimeTest {
     @Test
     public void shouldGotoFirstOfNextMonth(){
         LocalDate newYearsEve = DateTime8.createNewYearsEve2017();
-        LocalDate firstJanuary2018 = null;
-        assertThat(newYearsEve.getYear(), is(equalTo(2010)));
-        assertThat(newYearsEve.getMonth(), is(equalTo(1)));
-        assertThat(newYearsEve.getDayOfMonth(), is(equalTo(1)));
+        LocalDate firstJanuary2018 = newYearsEve.plusDays(1);
+        assertThat(firstJanuary2018.getYear(), is(equalTo(2018)));
+        assertThat(firstJanuary2018.getMonth(), is(equalTo(Month.JANUARY)));
+        assertThat(firstJanuary2018.getDayOfMonth(), is(equalTo(1)));
     }
 
     @Test
