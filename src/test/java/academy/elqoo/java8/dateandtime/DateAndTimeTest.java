@@ -19,7 +19,7 @@ public class DateAndTimeTest {
     public void shouldCreateNewDate(){
         LocalDate newYearsEve = null; // create new years eve 2017 using the localdate static factory methods
         assertThat(newYearsEve.getYear(), is(equalTo(2017)));
-        assertThat(newYearsEve.getMonth(), is(equalTo(12)));
+        assertThat(newYearsEve.getMonth(), is(equalTo(Month.DECEMBER)));
         assertThat(newYearsEve.getDayOfMonth(), is(equalTo(31)));
     }
 
