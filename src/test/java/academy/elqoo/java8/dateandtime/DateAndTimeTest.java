@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.time.*;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 
 import static java.time.Month.JANUARY;
@@ -35,11 +36,11 @@ public class DateAndTimeTest {
     @Test
     public void shouldRetrieveDateInformationUsingChronoFields(){
         LocalDate newYearsEve = DateTime8.createNewYearsEve2017();
-        int year = 0; // replace this by getting the year using chrono fields interface
-        int month =0;
-        int day = 0;
+        int year = newYearsEve.get(ChronoField.YEAR); // replace this by getting the year using chrono fields interface
+        int month =newYearsEve.get(ChronoField.MONTH_OF_YEAR);
+        int day = newYearsEve.getDayOfMonth();
         assertThat(year, is(equalTo(newYearsEve.getYear())));
-        assertThat(month, is(equalTo(newYearsEve.getMonth())));
+        assertThat(month, is(equalTo(12)));
         assertThat(day, is(equalTo(newYearsEve.getDayOfMonth())));
     }
 
