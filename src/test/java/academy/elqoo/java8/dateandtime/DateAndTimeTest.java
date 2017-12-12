@@ -46,11 +46,11 @@ public class DateAndTimeTest {
 
     @Test
     public void shouldParseLocalDate(){
-        String newYearsEveAsString = "2018-12-31";
+        String newYearsEveAsString = "2017-12-31";
         LocalDate newYearsEve = LocalDate.parse(newYearsEveAsString, DateTimeFormatter.ISO_DATE);
-        assertThat(newYearsEve.getYear(), is(equalTo(2018)));
+        assertThat(newYearsEve.getYear(), is(equalTo(2017)));
         assertThat(newYearsEve.getMonth(), is(equalTo(Month.DECEMBER)));
-        assertThat(newYearsEve.getDayOfMonth(), is(equalTo(1)));
+        assertThat(newYearsEve.getDayOfMonth(), is(equalTo(31)));
     }
 
     @Test(expected = DateTimeParseException.class)
