@@ -71,10 +71,10 @@ public class DateAndTimeTest {
 
     @Test
     public void shouldCreateLocalDateTimeNewYearsEve(){
-        LocalDateTime newYearsEve = null; // create LocalDateTime for new years eve at midnight
-        assertThat(newYearsEve.getYear(), is(equalTo(2010)));
-        assertThat(newYearsEve.getMonth(), is(equalTo(1)));
-        assertThat(newYearsEve.getDayOfMonth(), is(equalTo(1)));
+        LocalDateTime newYearsEve = LocalDateTime.of(2017,Month.DECEMBER,31,0,0); // create LocalDateTime for new years eve at midnight
+        assertThat(newYearsEve.getYear(), is(equalTo(2017)));
+        assertThat(newYearsEve.getMonth(), is(equalTo(Month.DECEMBER)));
+        assertThat(newYearsEve.getDayOfMonth(), is(equalTo(31)));
         assertThat(newYearsEve.getHour(), is(equalTo(0)));
         assertThat(newYearsEve.getMinute(), is(equalTo(0)));
         assertThat(newYearsEve.getSecond(), is(equalTo(0)));
