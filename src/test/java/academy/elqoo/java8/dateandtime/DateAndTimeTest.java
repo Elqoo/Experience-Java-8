@@ -94,9 +94,9 @@ public class DateAndTimeTest {
 
     @Test
     public void shouldCreateDurationFromTemporalUnit(){
-        Duration duration = null; // create a duration of 5 days
-        long days = (int) duration.get(ChronoUnit.DAYS);
-        assertThat(5, equalTo(days));
+        Duration duration = null; // create a duration of 5 seconds
+        long seconds = duration.getSeconds();
+        assertThat(5L, equalTo(seconds));
     }
 
     @Test
