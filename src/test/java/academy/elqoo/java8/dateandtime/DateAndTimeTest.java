@@ -56,8 +56,8 @@ public class DateAndTimeTest {
 
     @Test(expected = DateTimeParseException.class)
     public void shouldThrowParseException(){
-        String newYearsEveAsString = null;
-        LocalDate newYearsEve = null; // parse the an error
+        String newYearsEveAsString = "";
+        LocalDate newYearsEve = LocalDate.parse(newYearsEveAsString);
     }
 
     @Test
