@@ -89,7 +89,7 @@ public class DateAndTimeTest {
     @Test
     public void shouldCalculateDaysBetween(){
         LocalDate[] dates = DateTime8.getTwoLocalDates();
-        long daysBetween = 0; // calculate days between dates[0] and dates[1]
+        long daysBetween = Period.between(dates[0],dates[1]).getDays();
         assertThat(DateTime8.DAYS_BETWEEN, equalTo(daysBetween));
     }
 
