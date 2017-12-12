@@ -3,6 +3,7 @@ package academy.elqoo.java8.dateandtime;
 import org.junit.Test;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
@@ -46,11 +47,11 @@ public class DateAndTimeTest {
 
     @Test
     public void shouldParseLocalDate(){
-        String newYearsEveAsString = null;
-        LocalDate newYearsEve = null; // parse the localdate
-        assertThat(newYearsEve.getYear(), is(equalTo(2010)));
-        assertThat(newYearsEve.getMonth(), is(equalTo(1)));
-        assertThat(newYearsEve.getDayOfMonth(), is(equalTo(1)));
+        String newYearsEveAsString = "2017-12-31";
+        LocalDate newYearsEve = LocalDate.parse(newYearsEveAsString, DateTimeFormatter.ISO_DATE);
+        assertThat(newYearsEve.getYear(), is(equalTo(2017)));
+        assertThat(newYearsEve.getMonth(), is(equalTo(Month.DECEMBER)));
+        assertThat(newYearsEve.getDayOfMonth(), is(equalTo(31)));
     }
 
     @Test(expected = DateTimeParseException.class)
