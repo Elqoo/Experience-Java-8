@@ -127,7 +127,7 @@ public class DateAndTimeTest {
         LocalDate firstOfDecember = LocalDate.of(2017,12,1);
         LocalDate newYearsEve = null; // write a temporal adjuster to ajust the firstOfDecember to new years eve
         assertThat(newYearsEve.getYear(), is(equalTo(2017)));
-        assertThat(newYearsEve.getMonth(), is(equalTo(12)));
+        assertThat(newYearsEve.getMonth(), is(equalTo(Month.DECEMBER)));
         assertThat(newYearsEve.getDayOfMonth(), is(equalTo(31)));
     }
 
