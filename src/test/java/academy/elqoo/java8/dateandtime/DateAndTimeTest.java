@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.TemporalUnit;
 
 import static java.time.Month.JANUARY;
@@ -127,9 +128,9 @@ public class DateAndTimeTest {
     @Test
     public void shouldAdjustToNewYearsEve(){
         LocalDate firstOfDecember = LocalDate.of(2017,12,1);
-        LocalDate newYearsEve = null; // write a temporal adjuster to ajust the firstOfDecember to new years eve
+        LocalDate newYearsEve = firstOfDecember.with(TemporalAdjusters.lastDayOfMonth());// write a temporal adjuster to ajust the firstOfDecember to new years eve
         assertThat(newYearsEve.getYear(), is(equalTo(2017)));
-        assertThat(newYearsEve.getMonth(), is(equalTo(12)));
+        assertThat(newYearsEve.getMonth(), is(equalTo(Month.DECEMBER)));
         assertThat(newYearsEve.getDayOfMonth(), is(equalTo(31)));
     }
 
