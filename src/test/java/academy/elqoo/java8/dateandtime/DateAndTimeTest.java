@@ -108,7 +108,7 @@ public class DateAndTimeTest {
     }
 
     @Test
-    public void shouldFormattoString(){
+    public void shouldFormatToString(){
         LocalDate newYearsEve = DateTime8.createNewYearsEve2017();
         String format = null; // format the string
         assertThat("2017-12-31",equalTo(format));
