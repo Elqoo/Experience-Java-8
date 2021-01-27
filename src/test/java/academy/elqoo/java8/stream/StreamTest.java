@@ -3,9 +3,12 @@ package academy.elqoo.java8.stream;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static academy.elqoo.java8.stream.Stream8.MergingStreamsResultStreamBoth;
+import static academy.elqoo.java8.stream.Stream8.Merged4Streams_ResultContainsAllElements;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -237,7 +240,7 @@ public class StreamTest {
 
     @Test
     public void shouldBeEmptyStream(){
-        Stream<Integer> numberStream =null; //create empty stream
+        Stream<Integer> numberStream =Stream.empty(); //create empty stream
         assertNotNull(numberStream);
     }
 
@@ -258,5 +261,24 @@ public class StreamTest {
         String sample = "Working with Java8 Streams";
         String result = sample.chars().mapToObj(a -> ((char) a)).collect(new CharacterToStringCollector());
         assertThat(sample,equalTo(result));
+    }
+
+    @Test
+    public void shouldConcatStream(){
+        Stream<Integer> stream1 = Stream.of(1, 3, 5);
+        Stream<Integer> stream2 = Stream.of(2, 4, 6);
+        assertThat(Arrays.asList(1, 3, 5, 2, 4, 6),
+        equalTo(MergingStreamsResultStreamBoth(stream1,stream2)));
+    }
+
+    @Test
+    public void shouldConcat4Stream() {
+        Stream<Integer> stream1 = Stream.of(1, 3, 5);
+        Stream<Integer> stream2 = Stream.of(2, 4, 6);
+        Stream<Integer> stream3 = Stream.of(18, 15, 36);
+        Stream<Integer> stream4 = Stream.of(99);
+        assertThat(
+                Arrays.asList(1, 3, 5, 2, 4, 6, 18, 15, 36, 99),
+                equalTo(Merged4Streams_ResultContainsAllElements(stream1,stream2,stream3,stream4)));
     }
 }

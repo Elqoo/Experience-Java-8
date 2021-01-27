@@ -15,25 +15,25 @@ import java.util.stream.Collector;
 public class CharacterToStringCollector implements Collector<Character, StringBuilder, String> {
     @Override
     public Supplier<StringBuilder> supplier() {
-        return null;
+        return ()-> new StringBuilder();
     }
 
     @Override
     public BiConsumer<StringBuilder, Character> accumulator() {
-        return null;
+        return (stringBuilder, character) -> stringBuilder.append(character);
     }
 
     @Override
     public BinaryOperator<StringBuilder> combiner() {
-        return null;    }
-
+        return (stringBuilder, stringBuilder2) -> stringBuilder.append(stringBuilder2);
+    }
     @Override
     public Function<StringBuilder, String> finisher() {
-        return null;
+        return (stringBuilder ) -> stringBuilder.toString();
     }
 
     @Override
     public Set<Characteristics> characteristics() {
-        return null;
+        return EnumSet.of(Characteristics.CONCURRENT);
     }
 }

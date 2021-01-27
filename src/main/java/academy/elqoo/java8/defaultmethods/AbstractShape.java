@@ -1,6 +1,6 @@
 package academy.elqoo.java8.defaultmethods;
 
-public class AbstractShape implements Shape {
+public class AbstractShape implements Shape  {
 
     private int xPos = 0;
 
